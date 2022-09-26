@@ -1,19 +1,14 @@
-import mongoose from "mongoose"
+import { Flight } from "../models/flight.js"
 
-const Schema = mongoose.Schema
 
-const flightSchema = new Schema({
-  airline: String,
-  airport: String,
-  flightNo: Number,
-  departs: Date,
+function newFlight(req, res) {
+  res.render('flights/new', {
+    title: 'Add Flight'
+    // departureDefault: dateFromNow(365),
+  })
+}
 
-}, {
-  timestamps: true
-})
-
-const Flight = mongoose.model('Flight', flightSchema)
 
 export {
-  Flight
+  newFlight as new 
 }
