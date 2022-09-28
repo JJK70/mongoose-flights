@@ -2,21 +2,25 @@
 <link rel="stylesheet" href="/stylesheets/flights/new.css">
 <%- include('../partials/nav') %>
 <main>
-	<h1><%= title %></h1>
-  <div>
-    <p id="meal">Please first ensure that the meal is not already in the dropdown menu.</p>
-  </div>
-  <select>
-    <% meals.forEach(function(meal) { %>
-      <option><%= meal.name %></option>
-    <% }) %>
-  </select>
-  <br>
-  <form id="add-meal-form" action="/meals" method="POST">
-    <label for="meal-input">Meal:</label>
-    <input type="text" name="name" id="meal-input">
+  <h1><%= title %></h1>
+  <form id="new-form" action="/meals" method="POST">
+    <!-- Departure Date -->
+    <label for="name-input">Meal:</label>
+    <input 
+      type="string" 
+      id="name-input" 
+      name="name"
+      autocomplete="off" 
+    >
     <button type="submit">Add Meal</button>
   </form>
+  <h2>Meals Currently Available</h2>
+  <ul>
+    <% meals.forEach(meal => { %>
+      <li> <%= meal.name %>  </li>
+    <% }) %>
+    
+  </ul>
 </main>
 
 <%- include('../partials/footer') %>
